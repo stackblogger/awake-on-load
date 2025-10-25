@@ -20,8 +20,10 @@ Triggy is a webpack plugin that loads the javascript and css files when user int
 ## Installation
 
 ```bash
-npm install triggy
+npm install -D triggy
 ```
+
+> **Note**: This plugin should be installed as a dev dependency since it's only used during the build process.
 
 ## Usage
 
@@ -80,6 +82,7 @@ module.exports = {
 | `include` | RegExp[] | `[/\.html$/]` | File patterns to process |
 | `exclude` | RegExp[] | `[]` | File patterns to exclude |
 | `convertSrcToDataSrc` | boolean | `true` | Convert src/href attributes to data-src/data-href |
+| `lazyLoadFiles` | string[] | `[]` | Specific files to lazy load (if empty, all .js/.css files are lazy loaded) |
 
 ## Use Cases
 
@@ -95,6 +98,30 @@ Set `convertSrcToDataSrc: false` when:
 new TriggyPlugin({
   convertSrcToDataSrc: false // Only inject script, don't convert attributes
 })
+```
+
+### Selective File Loading
+
+Use `lazyLoadFiles` to specify exactly which files should be lazy loaded:
+
+```javascript
+new TriggyPlugin({
+  lazyLoadFiles: ['app.js', 'utils.js', 'styles.css']
+})
+```
+
+**Behavior:**
+- **With `lazyLoadFiles`**: Only files matching the list will be converted to lazy loading
+- **Without `lazyLoadFiles`**: All `.js` and `.css` files will be lazy loaded (default behavior)
+
+**Example:**
+```html
+<!-- Only app.js and utils.js will be lazy loaded -->
+<script src="app.js"></script>        <!-- ✅ Will be lazy loaded -->
+<script src="utils.js"></script>      <!-- ✅ Will be lazy loaded -->
+<script src="critical.js"></script>   <!-- ❌ Will load normally -->
+<link href="styles.css">              <!-- ✅ Will be lazy loaded -->
+<link href="bootstrap.css">           <!-- ❌ Will load normally -->
 ```
 
 ## Examples

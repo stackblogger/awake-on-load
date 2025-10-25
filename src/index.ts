@@ -8,6 +8,7 @@ export interface TriggyOptions {
   exclude?: RegExp[];
   include?: RegExp[];
   convertSrcToDataSrc?: boolean;
+  lazyLoadFiles?: string[];
 }
 
 export class TriggyPlugin {
@@ -20,6 +21,7 @@ export class TriggyPlugin {
       exclude: [],
       include: [/\.html$/],
       convertSrcToDataSrc: true,
+      lazyLoadFiles: [],
       ...options
     };
   }
@@ -110,15 +112,35 @@ export class TriggyPlugin {
   }
 
   private shouldConvertScript(src: string): boolean {
+    if (!this.options.convertSrcToDataSrc) return false;
     if (src.startsWith('data:') || src.startsWith('blob:')) return false;
-    if (src.includes('webpack') || src.includes('chunk')) return true;
+    
+    // Always convert webpack chunks regardless of lazyLoadFiles
+    if (src.includes('webpack') || src.includes('chunk') || /\.[a-zA-Z0-9]{6,}\.js$/.test(src)) return true;
+    
+    // If lazyLoadFiles is specified, only convert files in that list
+    if (this.options.lazyLoadFiles && this.options.lazyLoadFiles.length > 0) {
+      return this.options.lazyLoadFiles.some(file => src.includes(file));
+    }
+    
+    // Default behavior: convert .js files
     if (src.endsWith('.js')) return true;
     return false;
   }
 
   private shouldConvertLink(href: string): boolean {
+    if (!this.options.convertSrcToDataSrc) return false;
     if (href.startsWith('data:') || href.startsWith('blob:')) return false;
-    if (href.includes('webpack') || href.includes('chunk')) return true;
+    
+    // Always convert webpack chunks regardless of lazyLoadFiles
+    if (href.includes('webpack') || href.includes('chunk') || /\.[a-zA-Z0-9]{6,}\.css$/.test(href)) return true;
+    
+    // If lazyLoadFiles is specified, only convert files in that list
+    if (this.options.lazyLoadFiles && this.options.lazyLoadFiles.length > 0) {
+      return this.options.lazyLoadFiles.some(file => href.includes(file));
+    }
+    
+    // Default behavior: convert .css files
     if (href.endsWith('.css')) return true;
     return false;
   }
@@ -140,3 +162,8 @@ export class TriggyPlugin {
 }
 
 export default TriggyPlugin;
+
+// CommonJS compatibility
+module.exports = TriggyPlugin;
+module.exports.TriggyPlugin = TriggyPlugin;
+module.exports.default = TriggyPlugin;
