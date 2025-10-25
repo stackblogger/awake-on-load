@@ -1,6 +1,6 @@
 # Contributing to Triggy
 
-Thank you for your interest in contributing to Triggy! This document provides guidelines and information for contributors.
+Thank you for your interest for the contribution in the development of Triggy! This document provides guidelines and information for contributors.
 
 ## Getting Started
 
@@ -32,10 +32,10 @@ npm run ci            # Run full CI pipeline locally
 
 - Use TypeScript for all source code
 - Follow the existing code style and patterns
-- Run `npm run lint` before committing
+- Run `npm run lint` before commit
 - Ensure all tests pass with `npm test`
 
-### Testing
+### Test
 
 - Write tests for new features
 - Maintain or improve test coverage
@@ -44,7 +44,7 @@ npm run ci            # Run full CI pipeline locally
 ## Pull Request Process
 
 1. Ensure your code follows the project's coding standards
-2. Add tests for any new functionality
+2. Add tests for the code you add
 3. Update documentation if needed
 4. Run the full CI pipeline: `npm run ci`
 5. Submit a pull request with a clear description
@@ -57,9 +57,9 @@ npm run ci            # Run full CI pipeline locally
 - [ ] Documentation is updated if needed
 - [ ] PR description clearly explains the changes
 
-## Issue Reporting
+## Issue Report
 
-When reporting issues, please include:
+When you report an issue, please include
 
 - Triggy version
 - Node.js version
@@ -78,7 +78,7 @@ Releases are automated through GitHub Actions:
 
 ## Code of Conduct
 
-Please be respectful and constructive in all interactions. We aim to create a welcoming environment for all contributors.
+Please be respectful and constructive in all interactions. We aim to create a welcome environment for all contributors.
 
 ## Questions?
 

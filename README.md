@@ -7,14 +7,14 @@
 [![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=flat&logo=webpack&logoColor=black)](https://webpack.js.org/)
 [![Node.js](https://img.shields.io/badge/node-%3E%3D16.0.0-brightgreen.svg)](https://nodejs.org/)
 
-A webpack plugin that automatically implements lazy loading for JavaScript and CSS resources, enhancing page performance by loading resources only when users interact with the page.
+Triggy is a webpack plugin that loads the javascript and css files when user interaction happens like mouse move, scroll etc. It improves web page performance and boosts core web vitals.
 
 ## Features
 
-- **Automatic lazy loading** - Converts `src` to `data-src` and `href` to `data-href`
-- **Performance boost** - Resources load only on user interaction
+- **Automatic lazy load** - Converts `src` to `data-src` and `href` to `data-href`
+- **Performance boost** - Load resources only on user interaction
 - **Zero configuration** - Works out of the box
-- **Webpack integration** - Seamless build-time transformation
+- **Webpack integration** - Seamless integration
 - **Smart detection** - Automatically identifies webpack chunks and external resources
 
 ## Installation
@@ -178,8 +178,8 @@ module.exports = {
 
 ## Performance Benefits
 
-- **Faster initial page load** - Resources don't block rendering
-- **Better Core Web Vitals** - Improved LCP and FID scores
+- **Faster initial page load** - Resources don't block page render
+- **Better Core Web Vitals** - Improved LCP and FCP scores
 - **Reduced bandwidth usage** - Resources load only when needed
 - **Better user experience** - Pages feel more responsive
 
@@ -205,13 +205,6 @@ npm run test:coverage # Run tests with coverage report
 npm run ci            # Run full CI pipeline locally
 ```
 
-### Test Coverage
-
-- **76% Statement Coverage** - Excellent core logic coverage
-- **90% Branch Coverage** - Outstanding conditional logic coverage
-- **68% Function Coverage** - Most functions are tested
-- **73% Line Coverage** - Very good overall line coverage
-
 ## CI/CD
 
 This project uses GitHub Actions for continuous integration and deployment:
@@ -229,21 +222,8 @@ This project uses GitHub Actions for continuous integration and deployment:
   - Publishes to NPM automatically
   - Generates release notes from git commits
 
-### Publishing
-
-To publish a new version:
-
-```bash
-# Using the release script (recommended)
-npm run release 1.0.3
-
-# Or manually
-npm version patch
-git push origin main --tags
-```
-
-See [NPM_PUBLISHING.md](./NPM_PUBLISHING.md) for detailed setup instructions.
-
-## Contributing
+## Contribution
 
 Contributions are welcome! Please feel free to submit a Pull Request.
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for detailed contribution manual.
