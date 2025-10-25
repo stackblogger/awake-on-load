@@ -1,7 +1,7 @@
 {
-  "name": "awakejs-no-conversion-example",
+  "name": "awake-on-load-no-conversion-example",
   "version": "1.0.0",
-  "description": "Example of AwakeJS with convertSrcToDataSrc disabled",
+  "description": "Example of AwakeOnLoad with convertSrcToDataSrc disabled",
   "scripts": {
     "build": "webpack",
     "dev": "webpack serve --mode development"

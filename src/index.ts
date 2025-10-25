@@ -2,7 +2,7 @@ import { Compiler, Compilation, sources } from 'webpack';
 import * as fs from 'fs';
 import * as path from 'path';
 
-export interface AwakeJsOptions {
+export interface AwakeOnLoadOptions {
   enabled?: boolean;
   timeout?: number;
   exclude?: RegExp[];
@@ -10,10 +10,10 @@ export interface AwakeJsOptions {
   convertSrcToDataSrc?: boolean;
 }
 
-export class AwakeJsPlugin {
-  private options: AwakeJsOptions;
+export class AwakeOnLoadPlugin {
+  private options: AwakeOnLoadOptions;
 
-  constructor(options: AwakeJsOptions = {}) {
+  constructor(options: AwakeOnLoadOptions = {}) {
     this.options = {
       enabled: true,
       timeout: 10000,
@@ -25,7 +25,7 @@ export class AwakeJsPlugin {
   }
 
   apply(compiler: Compiler): void {
-    const pluginName = 'AwakeJsPlugin';
+    const pluginName = 'AwakeOnLoadPlugin';
 
     compiler.hooks.compilation.tap(pluginName, (compilation: Compilation) => {
       compilation.hooks.processAssets.tap(
@@ -139,4 +139,4 @@ export class AwakeJsPlugin {
   }
 }
 
-export default AwakeJsPlugin;
+export default AwakeOnLoadPlugin;

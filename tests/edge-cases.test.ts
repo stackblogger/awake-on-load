@@ -1,7 +1,7 @@
-import { AwakeJsPlugin } from '../src/index';
+import { AwakeOnLoadPlugin } from '../src/index';
 
 // Testable plugin class to access private methods
-class TestableAwakeJsPlugin extends AwakeJsPlugin {
+class TestableAwakeOnLoadPlugin extends AwakeOnLoadPlugin {
   public testConvertSrcToDataSrc(html: string): string {
     return (this as any).convertSrcToDataSrc(html);
   }
@@ -11,11 +11,11 @@ class TestableAwakeJsPlugin extends AwakeJsPlugin {
   }
 }
 
-describe('AwakeJsPlugin Edge Cases', () => {
-  let plugin: TestableAwakeJsPlugin;
+describe('AwakeOnLoadPlugin Edge Cases', () => {
+  let plugin: TestableAwakeOnLoadPlugin;
 
   beforeEach(() => {
-    plugin = new TestableAwakeJsPlugin();
+    plugin = new TestableAwakeOnLoadPlugin();
   });
 
   describe('HTML Edge Cases', () => {

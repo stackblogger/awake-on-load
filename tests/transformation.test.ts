@@ -1,7 +1,7 @@
-import { AwakeJsPlugin } from '../src/index';
+import { AwakeOnLoadPlugin } from '../src/index';
 
 // Testable plugin class to access private methods
-class TestableAwakeJsPlugin extends AwakeJsPlugin {
+class TestableAwakeOnLoadPlugin extends AwakeOnLoadPlugin {
   public testShouldProcessFile(filename: string): boolean {
     return (this as any).shouldProcessFile(filename);
   }
@@ -27,11 +27,11 @@ class TestableAwakeJsPlugin extends AwakeJsPlugin {
   }
 }
 
-describe('AwakeJsPlugin Transformation Logic', () => {
-  let plugin: TestableAwakeJsPlugin;
+describe('AwakeOnLoadPlugin Transformation Logic', () => {
+  let plugin: TestableAwakeOnLoadPlugin;
 
   beforeEach(() => {
-    plugin = new TestableAwakeJsPlugin();
+    plugin = new TestableAwakeOnLoadPlugin();
   });
 
   describe('File Processing', () => {
@@ -48,7 +48,7 @@ describe('AwakeJsPlugin Transformation Logic', () => {
     });
 
     it('should respect include patterns', () => {
-      const pluginWithInclude = new TestableAwakeJsPlugin({
+      const pluginWithInclude = new TestableAwakeOnLoadPlugin({
         include: [/\.html$/, /\.htm$/]
       });
       
@@ -58,7 +58,7 @@ describe('AwakeJsPlugin Transformation Logic', () => {
     });
 
     it('should respect exclude patterns', () => {
-      const pluginWithExclude = new TestableAwakeJsPlugin({
+      const pluginWithExclude = new TestableAwakeOnLoadPlugin({
         exclude: [/admin/, /private/]
       });
       
@@ -68,7 +68,7 @@ describe('AwakeJsPlugin Transformation Logic', () => {
     });
 
     it('should handle both include and exclude patterns', () => {
-      const pluginWithBoth = new TestableAwakeJsPlugin({
+      const pluginWithBoth = new TestableAwakeOnLoadPlugin({
         include: [/\.html$/],
         exclude: [/admin/]
       });
@@ -259,7 +259,7 @@ describe('AwakeJsPlugin Transformation Logic', () => {
 
   describe('Transform HTML Integration', () => {
     it('should transform HTML with conversion enabled', () => {
-      const pluginWithConversion = new TestableAwakeJsPlugin({ convertSrcToDataSrc: true });
+      const pluginWithConversion = new TestableAwakeOnLoadPlugin({ convertSrcToDataSrc: true });
       const html = '<script src="app.js"></script>';
       const script = '<script>console.log("test");</script>';
       
@@ -270,7 +270,7 @@ describe('AwakeJsPlugin Transformation Logic', () => {
     });
 
     it('should transform HTML with conversion disabled', () => {
-      const pluginWithoutConversion = new TestableAwakeJsPlugin({ convertSrcToDataSrc: false });
+      const pluginWithoutConversion = new TestableAwakeOnLoadPlugin({ convertSrcToDataSrc: false });
       const html = '<script src="app.js"></script>';
       const script = '<script>console.log("test");</script>';
       

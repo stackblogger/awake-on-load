@@ -1,7 +1,7 @@
 {
-  "name": "awakejs-basic-example",
+  "name": "awake-on-load-basic-example",
   "version": "1.0.0",
-  "description": "Basic example of AwakeJS webpack plugin",
+  "description": "Basic example of AwakeOnLoad webpack plugin",
   "scripts": {
     "build": "webpack",
     "dev": "webpack serve --mode development"
