@@ -48,7 +48,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/stackblogger/triggy.git"
+    "url": "git+https://github.com/stackblogger/triggy.git"
   },
   "homepage": "https://github.com/stackblogger/triggy#readme"
 }
