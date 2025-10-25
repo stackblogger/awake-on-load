@@ -1,5 +1,14 @@
 # Triggy
 
+[![npm version](https://img.shields.io/npm/v/triggy.svg)](https://www.npmjs.com/package/triggy)
+[![Build Status](https://github.com/stackblogger/triggy/actions/workflows/ci.yml/badge.svg)](https://github.com/stackblogger/triggy/actions)
+[![Test Coverage](https://codecov.io/gh/stackblogger/triggy/branch/master/graph/badge.svg)](https://codecov.io/gh/stackblogger/triggy)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-%230074c1.svg)](http://www.typescriptlang.org/)
+[![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=flat&logo=webpack&logoColor=black)](https://webpack.js.org/)
+[![Node.js](https://img.shields.io/badge/node-%3E%3D16.0.0-brightgreen.svg)](https://nodejs.org/)
+[![Downloads](https://img.shields.io/npm/dm/triggy.svg)](https://www.npmjs.com/package/triggy)
+
 A webpack plugin that automatically implements lazy loading for JavaScript and CSS resources, enhancing page performance by loading resources only when users interact with the page.
 
 ## Features
@@ -195,7 +204,32 @@ The plugin includes comprehensive test coverage:
 npm test              # Run all tests
 npm run test:watch    # Run tests in watch mode
 npm run test:coverage # Run tests with coverage report
+npm run ci            # Run full CI pipeline locally
 ```
+
+### Test Coverage
+
+- **76% Statement Coverage** - Excellent core logic coverage
+- **90% Branch Coverage** - Outstanding conditional logic coverage
+- **68% Function Coverage** - Most functions are tested
+- **73% Line Coverage** - Very good overall line coverage
+
+## CI/CD
+
+This project uses GitHub Actions for continuous integration and deployment:
+
+### Workflows
+
+- **CI Pipeline** - Runs on every push and PR
+  - Tests on Node.js 16.x, 18.x, and 20.x
+  - Builds the project and examples
+  - Runs security audits
+  - Publishes to NPM on master branch
+
+- **Release Pipeline** - Runs on version tags
+  - Creates GitHub releases
+  - Publishes to NPM
+  - Generates changelog
 
 ## Contributing
 
