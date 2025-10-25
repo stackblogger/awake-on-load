@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AwakeJS - No Conversion Example</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>AwakeJS - No Conversion Demo</h1>
+        <p>This example shows AwakeJS with <code>convertSrcToDataSrc: false</code></p>
+        <p>Scripts will load on interaction, but src attributes remain unchanged.</p>
+        
+        <button id="testButton">Click me to test interaction</button>
+        <div id="output"></div>
+    </div>
+    
+    <!-- These src attributes will NOT be converted to data-src -->
+    <script src="app.js"></script>
+    <script src="utils.js"></script>
+</body>
+</html>
