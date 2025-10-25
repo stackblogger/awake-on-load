@@ -13,11 +13,11 @@ A webpack plugin that automatically implements lazy loading for JavaScript and C
 
 ## Features
 
-- 🚀 **Automatic lazy loading** - Converts `src` to `data-src` and `href` to `data-href`
-- ⚡ **Performance boost** - Resources load only on user interaction
-- 🔧 **Zero configuration** - Works out of the box
-- 📦 **Webpack integration** - Seamless build-time transformation
-- 🎯 **Smart detection** - Automatically identifies webpack chunks and external resources
+- **Automatic lazy loading** - Converts `src` to `data-src` and `href` to `data-href`
+- **Performance boost** - Resources load only on user interaction
+- **Zero configuration** - Works out of the box
+- **Webpack integration** - Seamless build-time transformation
+- **Smart detection** - Automatically identifies webpack chunks and external resources
 
 ## Installation
 
@@ -224,12 +224,27 @@ This project uses GitHub Actions for continuous integration and deployment:
   - Tests on Node.js 16.x, 18.x, and 20.x
   - Builds the project and examples
   - Runs security audits
-  - Publishes to NPM on master branch
+  - Lints code with ESLint
 
-- **Release Pipeline** - Runs on version tags
-  - Creates GitHub releases
-  - Publishes to NPM
-  - Generates changelog
+- **Release Pipeline** - Runs on version tags (v*)
+  - Creates GitHub releases with changelog
+  - Publishes to NPM automatically
+  - Generates release notes from git commits
+
+### Publishing
+
+To publish a new version:
+
+```bash
+# Using the release script (recommended)
+npm run release 1.0.3
+
+# Or manually
+npm version patch
+git push origin main --tags
+```
+
+See [NPM_PUBLISHING.md](./NPM_PUBLISHING.md) for detailed setup instructions.
 
 ## Contributing
 
