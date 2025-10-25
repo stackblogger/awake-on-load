@@ -29,13 +29,6 @@ jobs:
         cache: 'npm'
         registry-url: 'https://registry.npmjs.org'
         
-    - name: Debug NPM Token
-      run: |
-        echo "NODE_AUTH_TOKEN is set: $([ -n "$NODE_AUTH_TOKEN" ] && echo "YES" || echo "NO")"
-        echo "NODE_AUTH_TOKEN length: ${#NODE_AUTH_TOKEN}"
-        echo "NODE_AUTH_TOKEN starts with: ${NODE_AUTH_TOKEN:0:10}..."
-        echo "NODE_AUTH_TOKEN ends with: ...${NODE_AUTH_TOKEN: -10}"
-        
     - name: Install dependencies
       run: npm ci
       
