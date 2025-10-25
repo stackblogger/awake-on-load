@@ -1,7 +1,7 @@
-import { AwakeOnLoadPlugin } from '../src/index';
+import { TriggyPlugin } from '../src/index';
 
 // Testable plugin class to access private methods
-class TestableAwakeOnLoadPlugin extends AwakeOnLoadPlugin {
+class TestableTriggyPlugin extends TriggyPlugin {
   public testShouldProcessFile(filename: string): boolean {
     return (this as any).shouldProcessFile(filename);
   }
@@ -27,11 +27,11 @@ class TestableAwakeOnLoadPlugin extends AwakeOnLoadPlugin {
   }
 }
 
-describe('AwakeOnLoadPlugin Transformation Logic', () => {
-  let plugin: TestableAwakeOnLoadPlugin;
+describe('TriggyPlugin Transformation Logic', () => {
+  let plugin: TestableTriggyPlugin;
 
   beforeEach(() => {
-    plugin = new TestableAwakeOnLoadPlugin();
+    plugin = new TestableTriggyPlugin();
   });
 
   describe('File Processing', () => {
@@ -48,7 +48,7 @@ describe('AwakeOnLoadPlugin Transformation Logic', () => {
     });
 
     it('should respect include patterns', () => {
-      const pluginWithInclude = new TestableAwakeOnLoadPlugin({
+      const pluginWithInclude = new TestableTriggyPlugin({
         include: [/\.html$/, /\.htm$/]
       });
       
@@ -58,7 +58,7 @@ describe('AwakeOnLoadPlugin Transformation Logic', () => {
     });
 
     it('should respect exclude patterns', () => {
-      const pluginWithExclude = new TestableAwakeOnLoadPlugin({
+      const pluginWithExclude = new TestableTriggyPlugin({
         exclude: [/admin/, /private/]
       });
       
@@ -68,7 +68,7 @@ describe('AwakeOnLoadPlugin Transformation Logic', () => {
     });
 
     it('should handle both include and exclude patterns', () => {
-      const pluginWithBoth = new TestableAwakeOnLoadPlugin({
+      const pluginWithBoth = new TestableTriggyPlugin({
         include: [/\.html$/],
         exclude: [/admin/]
       });
@@ -259,7 +259,7 @@ describe('AwakeOnLoadPlugin Transformation Logic', () => {
 
   describe('Transform HTML Integration', () => {
     it('should transform HTML with conversion enabled', () => {
-      const pluginWithConversion = new TestableAwakeOnLoadPlugin({ convertSrcToDataSrc: true });
+      const pluginWithConversion = new TestableTriggyPlugin({ convertSrcToDataSrc: true });
       const html = '<script src="app.js"></script>';
       const script = '<script>console.log("test");</script>';
       
@@ -270,7 +270,7 @@ describe('AwakeOnLoadPlugin Transformation Logic', () => {
     });
 
     it('should transform HTML with conversion disabled', () => {
-      const pluginWithoutConversion = new TestableAwakeOnLoadPlugin({ convertSrcToDataSrc: false });
+      const pluginWithoutConversion = new TestableTriggyPlugin({ convertSrcToDataSrc: false });
       const html = '<script src="app.js"></script>';
       const script = '<script>console.log("test");</script>';
       

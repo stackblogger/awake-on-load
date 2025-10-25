@@ -1,4 +1,4 @@
-# AwakeOnLoad
+# Triggy
 
 A webpack plugin that automatically implements lazy loading for JavaScript and CSS resources, enhancing page performance by loading resources only when users interact with the page.
 
@@ -13,7 +13,7 @@ A webpack plugin that automatically implements lazy loading for JavaScript and C
 ## Installation
 
 ```bash
-npm install awake-on-load
+npm install triggy
 ```
 
 ## Usage
@@ -23,12 +23,12 @@ npm install awake-on-load
 Add the plugin to your webpack configuration:
 
 ```javascript
-const AwakeOnLoadPlugin = require('awake-on-load');
+const TriggyPlugin = require('triggy');
 
 module.exports = {
   // ... your webpack config
   plugins: [
-    new AwakeOnLoadPlugin()
+    new TriggyPlugin()
   ]
 };
 ```
@@ -36,11 +36,11 @@ module.exports = {
 ### Advanced Configuration
 
 ```javascript
-const AwakeOnLoadPlugin = require('awake-on-load');
+const TriggyPlugin = require('triggy');
 
 module.exports = {
   plugins: [
-    new AwakeOnLoadPlugin({
+    new TriggyPlugin({
       enabled: true,           // Enable/disable the plugin
       timeout: 15000,         // Timeout in ms before auto-loading (default: 10000)
       include: [/\.html$/],   // Files to process (default: HTML files)
@@ -85,7 +85,7 @@ Set `convertSrcToDataSrc: false` when:
 - You only want the lazy loading functionality without attribute conversion
 
 ```javascript
-new AwakeOnLoadPlugin({
+new TriggyPlugin({
   convertSrcToDataSrc: false // Only inject script, don't convert attributes
 })
 ```
@@ -129,11 +129,11 @@ new AwakeOnLoadPlugin({
 
 ```javascript
 // webpack.config.js (eject or use CRACO)
-const AwakeOnLoadPlugin = require('awake-on-load');
+const TriggyPlugin = require('triggy');
 
 module.exports = {
   plugins: [
-    new AwakeOnLoadPlugin({
+    new TriggyPlugin({
       timeout: 5000 // Load after 5 seconds
     })
   ]
@@ -144,12 +144,12 @@ module.exports = {
 
 ```javascript
 // vue.config.js
-const AwakeOnLoadPlugin = require('awake-on-load');
+const TriggyPlugin = require('triggy');
 
 module.exports = {
   configureWebpack: {
     plugins: [
-      new AwakeOnLoadPlugin()
+      new TriggyPlugin()
     ]
   }
 };
@@ -159,11 +159,11 @@ module.exports = {
 
 ```javascript
 // next.config.js
-const AwakeOnLoadPlugin = require('awake-on-load');
+const TriggyPlugin = require('triggy');
 
 module.exports = {
   webpack: (config) => {
-    config.plugins.push(new AwakeOnLoadPlugin());
+    config.plugins.push(new TriggyPlugin());
     return config;
   }
 };

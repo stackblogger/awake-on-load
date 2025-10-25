@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const AwakeOnLoadPlugin = require('../../dist/index.js');
+const TriggyPlugin = require('../../dist/index.js');
 
 module.exports = {
   mode: 'development',
@@ -15,7 +15,7 @@ module.exports = {
       template: './src/index.html',
       filename: 'index.html'
     }),
-    new AwakeOnLoadPlugin({
+    new TriggyPlugin({
       convertSrcToDataSrc: false, // Don't convert src attributes
       timeout: 3000
     })

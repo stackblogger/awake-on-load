@@ -1,7 +1,7 @@
-import { AwakeOnLoadPlugin } from '../src/index';
+import { TriggyPlugin } from '../src/index';
 
 // Testable plugin class to access private methods
-class TestableAwakeOnLoadPlugin extends AwakeOnLoadPlugin {
+class TestableTriggyPlugin extends TriggyPlugin {
   public testConvertSrcToDataSrc(html: string): string {
     return (this as any).convertSrcToDataSrc(html);
   }
@@ -11,11 +11,11 @@ class TestableAwakeOnLoadPlugin extends AwakeOnLoadPlugin {
   }
 }
 
-describe('AwakeOnLoadPlugin Edge Cases', () => {
-  let plugin: TestableAwakeOnLoadPlugin;
+describe('TriggyPlugin Edge Cases', () => {
+  let plugin: TestableTriggyPlugin;
 
   beforeEach(() => {
-    plugin = new TestableAwakeOnLoadPlugin();
+    plugin = new TestableTriggyPlugin();
   });
 
   describe('HTML Edge Cases', () => {

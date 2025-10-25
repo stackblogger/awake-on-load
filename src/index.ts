@@ -2,7 +2,7 @@ import { Compiler, Compilation, sources } from 'webpack';
 import * as fs from 'fs';
 import * as path from 'path';
 
-export interface AwakeOnLoadOptions {
+export interface TriggyOptions {
   enabled?: boolean;
   timeout?: number;
   exclude?: RegExp[];
@@ -10,10 +10,10 @@ export interface AwakeOnLoadOptions {
   convertSrcToDataSrc?: boolean;
 }
 
-export class AwakeOnLoadPlugin {
-  private options: AwakeOnLoadOptions;
+export class TriggyPlugin {
+  private options: TriggyOptions;
 
-  constructor(options: AwakeOnLoadOptions = {}) {
+  constructor(options: TriggyOptions = {}) {
     this.options = {
       enabled: true,
       timeout: 10000,
@@ -25,7 +25,7 @@ export class AwakeOnLoadPlugin {
   }
 
   apply(compiler: Compiler): void {
-    const pluginName = 'AwakeOnLoadPlugin';
+    const pluginName = 'TriggyPlugin';
 
     compiler.hooks.compilation.tap(pluginName, (compilation: Compilation) => {
       compilation.hooks.processAssets.tap(
@@ -139,4 +139,4 @@ export class AwakeOnLoadPlugin {
   }
 }
 
-export default AwakeOnLoadPlugin;
+export default TriggyPlugin;

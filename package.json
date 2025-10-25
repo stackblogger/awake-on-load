@@ -1,6 +1,6 @@
 {
-  "name": "awake-on-load",
-  "version": "1.0.0",
+  "name": "triggy",
+  "version": "1.0.1",
   "description": "A webpack plugin for lazy loading JavaScript and CSS resources on user interaction",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -25,7 +25,7 @@
     "javascript",
     "css"
   ],
-  "author": "Your Name",
+  "author": "Jameer Khan",
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^29.0.0",
@@ -41,7 +41,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/awake-on-load.git"
+    "url": "https://github.com/stackblogger/triggy.git"
   },
-  "homepage": "https://github.com/yourusername/awake-on-load#readme"
+  "homepage": "https://github.com/stackblogger/triggy#readme"
 }

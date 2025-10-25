@@ -1,7 +1,7 @@
 {
-  "name": "awake-on-load-basic-example",
+  "name": "triggy-basic-example",
   "version": "1.0.0",
-  "description": "Basic example of AwakeOnLoad webpack plugin",
+  "description": "Basic example of Triggy webpack plugin",
   "scripts": {
     "build": "webpack",
     "dev": "webpack serve --mode development"
