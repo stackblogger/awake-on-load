@@ -38,6 +38,13 @@ jobs:
     - name: Run tests
       run: npm test
       
+    - name: Bump version
+      run: |
+        # Extract version from tag (e.g., v1.0.3 -> 1.0.3)
+        VERSION=${GITHUB_REF#refs/tags/v}
+        npm version $VERSION --no-git-tag-version
+        echo "Updated package.json to version $VERSION"
+      
     - name: Generate changelog
       id: changelog
       run: |
