@@ -2,12 +2,9 @@
 
 [![npm version](https://img.shields.io/npm/v/triggy.svg)](https://www.npmjs.com/package/triggy)
 [![Build Status](https://github.com/stackblogger/triggy/actions/workflows/ci.yml/badge.svg)](https://github.com/stackblogger/triggy/actions)
-[![Test Coverage](https://codecov.io/gh/stackblogger/triggy/branch/master/graph/badge.svg)](https://codecov.io/gh/stackblogger/triggy)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-%230074c1.svg)](http://www.typescriptlang.org/)
 [![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=flat&logo=webpack&logoColor=black)](https://webpack.js.org/)
 [![Node.js](https://img.shields.io/badge/node-%3E%3D16.0.0-brightgreen.svg)](https://nodejs.org/)
-[![Downloads](https://img.shields.io/npm/dm/triggy.svg)](https://www.npmjs.com/package/triggy)
 
 A webpack plugin that automatically implements lazy loading for JavaScript and CSS resources, enhancing page performance by loading resources only when users interact with the page.
 
