@@ -253,4 +253,4 @@ This project uses GitHub Actions for continuous integration and deployment:
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for detailed contribution manual.
+See [CONTRIBUTION.md](./CONTRIBUTION.md) for detailed contribution manual.
