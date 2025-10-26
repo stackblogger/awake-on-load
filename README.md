@@ -11,11 +11,9 @@ Triggy is a webpack plugin that loads the javascript and css files when user int
 
 ## Features
 
-- **Automatic lazy load** - Converts `src` to `data-src` and `href` to `data-href`
-- **Performance boost** - Load resources only on user interaction
-- **Zero configuration** - Works out of the box
-- **Webpack integration** - Seamless integration
-- **Smart detection** - Automatically identifies webpack chunks and external resources
+- **Automatic lazy load** - it will automatically convert all the `src` attributes to `data-src` and `href` to `data-href`
+- **Performance boost** - it loads static resources only on user interaction
+- **Webpack integration** - very easy integration to webpack builder
 
 ## Installation
 
@@ -23,13 +21,13 @@ Triggy is a webpack plugin that loads the javascript and css files when user int
 npm install -D triggy
 ```
 
-> **Note**: This plugin should be installed as a dev dependency since it's only used during the build process.
+> **Note**: The plugin needs to be installed as a dev dependency because it is only used at the time of build.
 
 ## Usage
 
 ### Basic Setup
 
-Add the plugin to your webpack configuration:
+Here is how to add the plguin to your webpack configuration-
 
 ```javascript
 const TriggyPlugin = require('triggy');
@@ -51,10 +49,11 @@ module.exports = {
   plugins: [
     new TriggyPlugin({
       enabled: true,           // Enable/disable the plugin
-      timeout: 15000,         // Timeout in ms before auto-loading (default: 10000)
+      timeout: 15000,         // Timeout in ms before automatic load static files (default: 10000)
       include: [/\.html$/],   // Files to process (default: HTML files)
       exclude: [/admin\.html/], // Files to exclude
-      convertSrcToDataSrc: true // Convert src to data-src (default: true)
+      convertSrcToDataSrc: true, // Convert all the src attributes to data-src (default: true)
+      lazyLoadFiles: ['app.js', 'utils.js', 'styles.css']  // Only lazy load the mentioned files
     })
   ]
 };
@@ -62,26 +61,25 @@ module.exports = {
 
 ## How It Works
 
-1. **Build Time**: The plugin automatically:
+1. **Build Time**: Triggy automatically-
    - Converts `<script src="...">` to `<script data-src="...">`
    - Converts `<link href="...">` to `<link data-href="...">`
    - Injects the lazy loading script at the end of your HTML
 
-2. **Runtime**: The injected script:
-   - Monitors user interactions (click, mousemove, keydown, etc.)
-   - Loads resources when any interaction occurs
-   - Falls back to auto-loading after 10 seconds (configurable)
-   - Replays stored user interactions after scripts load
+2. **Runtime**: The injected script will-
+   - monitor user interactions like mouse move, wheel, touch, click etc
+   - load static resources when user interaction happens
+   - fall back to automatic loading after 10 seconds (configurable)
 
 ## Configuration Options
 
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
 | `enabled` | boolean | `true` | Enable or disable the plugin |
-| `timeout` | number | `10000` | Timeout in milliseconds before auto-loading resources |
+| `timeout` | number | `10000` | Timeout in milliseconds before automatic load static resources |
 | `include` | RegExp[] | `[/\.html$/]` | File patterns to process |
 | `exclude` | RegExp[] | `[]` | File patterns to exclude |
-| `convertSrcToDataSrc` | boolean | `true` | Convert src/href attributes to data-src/data-href |
+| `convertSrcToDataSrc` | boolean | `true` | Convert all the src/href attributes to data-src/data-href |
 | `lazyLoadFiles` | string[] | `[]` | Specific files to lazy load (if empty, all .js/.css files are lazy loaded) |
 
 ## Use Cases
@@ -90,9 +88,9 @@ module.exports = {
 
 Set `convertSrcToDataSrc: false` when:
 
-- You want to inject the lazy loading script but keep existing `src` attributes unchanged
-- You're manually managing `data-src` attributes in your HTML
-- You only want the lazy loading functionality without attribute conversion
+- You want to inject the lazy loading script without changing the `src` attributes
+- You're manually handling the `data-src` attributes in HTML
+- You want the lazy load functionality without attribute conversion
 
 ```javascript
 new TriggyPlugin({
@@ -102,7 +100,7 @@ new TriggyPlugin({
 
 ### Selective File Loading
 
-Use `lazyLoadFiles` to specify exactly which files should be lazy loaded:
+Use `lazyLoadFiles` to specify which files should lazy load:
 
 ```javascript
 new TriggyPlugin({
@@ -111,12 +109,11 @@ new TriggyPlugin({
 ```
 
 **Behavior:**
-- **With `lazyLoadFiles`**: Only files matching the list will be converted to lazy loading
-- **Without `lazyLoadFiles`**: All `.js` and `.css` files will be lazy loaded (default behavior)
+- **When you use `lazyLoadFiles`** - it will lazy load only those specified files
+- **When you dont use `lazyLoadFiles`** - it will lazy load the `.js` and `.css` files
 
 **Example:**
 ```html
-<!-- Only app.js and utils.js will be lazy loaded -->
 <script src="app.js"></script>        <!-- ✅ Will be lazy loaded -->
 <script src="utils.js"></script>      <!-- ✅ Will be lazy loaded -->
 <script src="critical.js"></script>   <!-- ❌ Will load normally -->
@@ -205,10 +202,10 @@ module.exports = {
 
 ## Performance Benefits
 
-- **Faster initial page load** - Resources don't block page render
-- **Better Core Web Vitals** - Improved LCP and FCP scores
-- **Reduced bandwidth usage** - Resources load only when needed
-- **Better user experience** - Pages feel more responsive
+- **Faster initial page load** - these resources don't block page render
+- **Better Core Web Vitals** - it improves LCP and FCP scores
+- **Reduced bandwidth usage** - the resources load only when needed
+- **Better user experience** - the pages feel more responsive
 
 ## Browser Support
 
@@ -223,7 +220,7 @@ MIT
 
 ## Testing
 
-The plugin includes comprehensive test coverage:
+The plugin includes wide test coverage:
 
 ```bash
 npm test              # Run all tests
