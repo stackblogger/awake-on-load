@@ -1,4 +1,4 @@
-# Contributing to Triggy
+# Contribution to Triggy
 
 Thank you for your interest for the contribution in the development of Triggy! This document provides guidelines and information for contributors.
 
